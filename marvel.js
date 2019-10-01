@@ -75,7 +75,7 @@ function clearResults()
 
 function getMatches()
 {
-    //console.log("in get matches");
+    console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
     $('#searchresults').empty();
