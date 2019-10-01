@@ -16,7 +16,7 @@
 
 using namespace std;
 
-string receive_fifo = "Marvelrequest"
+string receive_fifo = "Marvelrequest";
 string send_fifo = "Marvelreply";
 
 int main()
