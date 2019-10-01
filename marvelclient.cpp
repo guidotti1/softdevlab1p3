@@ -73,6 +73,7 @@ int main()
     sendfifo.fifoclose();
 
     cout << "Content-type: text/plain\n\n";
+    cout<<"BADTHINGS"<<endl;
     cout << results << endl;
 
     return 0;
