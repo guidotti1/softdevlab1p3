@@ -1,6 +1,7 @@
 # MakeFile to build the Sample US CENSUS Name Data lookup program 
 # For CSC3004 Software Development
 # C++ compiler to use
+USER= guidotti1
 CC= g++
 
 #For Optimization
@@ -10,7 +11,7 @@ CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
-all: marvelLookup PutCGI PutHTML
+all: marvelserver marvelclient PutCGI PutHTML
 
 dataEntry.o: dataEntry.cpp dataEntry.h
 	$(CC) $(CFLAGS) dataEntry.cpp -c
@@ -21,24 +22,33 @@ dataLookup.o: dataLookup.cpp dataLookup.h dataEntry.h
 extraFunctions.o: extraFunctions.cpp extraFunctions.h
 	$(CC) $(CFLAGS) extraFunctions.cpp -c
 
-marvelLookup.o: marvelLookup.cpp dataEntry.h dataLookup.h extraFunctions.h
-	$(CC) $(CFLAGS) marvelLookup.cpp -c
-
-marvelLookup: marvelLookup.o dataEntry.o dataLookup.o extraFunctions.o
-	$(CC) $(CFLAGS) marvelLookup.o -o marvelLookup dataEntry.o dataLookup.o extraFunctions.o -L/usr/local/lib -lcgicc
+marvelserver.o: marvelserver.cpp fifo.h dataEntry.h dataLookup.h extraFunctions.h
+	$(CC) -c $(CFLAGS) marvelserver.cpp 
 	
-PutCGI: marvelLookup
-	chmod 757 marvelLookup
-	cp marvelLookup /usr/lib/cgi-bin/$(USER)_marvelLookup.cgi
+marvelclient.o: marvelclient.cpp fifo.h
+	$(CC) -c $(CFLAGS) marvelclient.cpp 
+
+marvelserver: marvelserver.o fifo.o dataEntry.o dataLookup.o extraFunctions.o
+	$(CC) $(CFLAGS) marvelserver.o dataEntry.o dataLookup.o extraFunctions.o fifo.o -o marvelserver
+
+fifo.o: fifo.cpp fifo.h
+	g++ -c fifo.cpp
+	
+marvelclient: marvelclient.o fifo.h
+	$(CC) marvelclient.o fifo.o -o marvelclient -L/usr/local/lib -lcgicc
+	
+PutCGI: marvelclient
+	chmod 757 marvelclient
+	cp marvelclient /usr/lib/cgi-bin/$(USER)_marvelLookup.cgi
 	cp input.txt /usr/lib/cgi-bin/$(USER)_input.txt
 	
 	echo "Current contents of your cgi-bin directory: "
 	ls -l /usr/lib/cgi-bin/
 	
 PutHTML: 
-	cp marvel.html /var/www/html/class/softdev/$(USER)/MarvelLookup/
-	cp marvel.css /var/www/html/class/softdev/$(USER)/MarvelLookup/
-	cp marvel.js /var/www/html/class/softdev/$(USER)/MarvelLookup/
+	cp marvel.html /var/www/html/class/softdev/$(USER)/MarvelLookupServer/
+	cp marvel.css /var/www/html/class/softdev/$(USER)/MarvelLookupServer/
+	cp marvel.js /var/www/html/class/softdev/$(USER)/MarvelLookupServer/
 
 clean:
 	rm -f *.o  main
