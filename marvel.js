@@ -57,6 +57,7 @@ function userSelectCharacter()
 
 function processResults(results) 
 {
+    console.log("In processResults");
     $('#searchresults').empty();
     $('#searchresults').append(nameTable(results));
 }
