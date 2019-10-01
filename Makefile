@@ -39,7 +39,7 @@ marvelclient: marvelclient.o fifo.h extraFunctions.h
 	
 PutCGI: marvelclient
 	chmod 757 marvelclient
-	cp marvelclient /usr/lib/cgi-bin/$(USER)_marvelLookup.cgi
+	cp marvelclient /usr/lib/cgi-bin/$(USER)_marvelclient.cgi
 	cp input.txt /usr/lib/cgi-bin/$(USER)_input.txt
 	
 	echo "Current contents of your cgi-bin directory: "
