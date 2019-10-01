@@ -22,8 +22,8 @@ using namespace cgicc;
 #define YEAR "Year"
 #define MULTI "MultiWord"
 
-string receive_fifo = "Marvelreply"
-string send_fifo = "Marvelrequest"
+string receive_fifo = "Marvelreply";
+string send_fifo = "Marvelrequest";
 
 int main()
 {
