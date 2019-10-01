@@ -246,7 +246,7 @@ string dataLookup::readMatches (vector<dataEntry> characters)
         ss << i+1;
         iString = ss.str();
         outMessage += iString;
-        outMessage += ","';
+        outMessage += ",";
         //cout << i+1 << ",";
             for (int q = 0; q < characters[i].name.size(); q++)
             {
