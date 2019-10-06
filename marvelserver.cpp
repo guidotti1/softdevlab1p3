@@ -63,6 +63,10 @@ int main()
             while (end == false)
             {
                 getline(s2, outWord, '?');
+                if (outWord == "$END")
+                {
+                    end = true;
+                }
                 sendfifo.openwrite();
                 sendfifo.send(outWord);
                 sendfifo.fifoclose();
