@@ -69,13 +69,14 @@ int main()
 
     //if (sendNumber == "0%")
     //{
-        recfifo.openread();
+
         sendfifo.fifoclose();
         cout << "Content-type: text/plain\n\n";
         //cout << "WE HERE ,"<<endl;
         bool end = false;
         while (end == false)
         {
+            recfifo.openread();
             string results = recfifo.recv();
                 if (results == "$END")
                 {
@@ -84,6 +85,7 @@ int main()
                     break;
                 }
             cout << results << endl;
+            recfifo.fifoclose();
         }
     //}
     //else 
