@@ -66,9 +66,10 @@ int main()
                 getline(s2, outWord, '?');
                 if (outWord == "$END")
                 {
-                    end = true;
+                    sendfifo.send(outWord);
                     sendfifo.fifoclose();
                     recfifo.fifoclose();
+                    end = true;
                 }
                 sendfifo.send(outWord);
                 cout << "sending outWord :: " << outWord << endl;
