@@ -68,6 +68,7 @@ int main()
                 if (outWord == "$END")
                 {
                     sendfifo.send(outWord);
+                    cout << "last outWord!! :: " << outWord << endl;
                     sendfifo.fifoclose();
                     recfifo.fifoclose();
                     end = true;
