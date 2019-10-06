@@ -60,17 +60,17 @@ int main()
             bool end = false;
             stringstream s2(outMessage);
             string outWord;
+            sendfifo.openwrite();
             while (end == false)
             {
                 getline(s2, outWord, '?');
                 if (outWord == "$END")
                 {
                     end = true;
+                    sendfifo.fifoclose();
+                    recfifo.fifoclose();
                 }
-                sendfifo.openwrite();
                 sendfifo.send(outWord);
-                sendfifo.fifoclose();
-                recfifo.fifoclose();
             }
             cout << " Results: (charNumInt = 1) " << outMessage << endl;
             }
