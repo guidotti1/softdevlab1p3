@@ -30,6 +30,8 @@ public :
     vector<dataEntry> userSearch(char type, string data);
     //reads matches for a name/year
     string readMatches (vector<dataEntry> characters);
+    
+    string returnData(dataEntry characterSelection);
 
 private:
 
