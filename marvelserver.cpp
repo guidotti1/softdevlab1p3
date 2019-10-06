@@ -70,6 +70,7 @@ int main()
                     sendfifo.fifoclose();
                     recfifo.fifoclose();
                     end = true;
+                    break;
                 }
                 sendfifo.send(outWord);
                 cout << "sending outWord :: " << outWord << endl;
