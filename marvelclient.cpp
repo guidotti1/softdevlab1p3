@@ -70,23 +70,23 @@ int main()
     //if (sendNumber == "0%")
     //{
 
-        sendfifo.fifoclose();
-        cout << "Content-type: text/plain\n\n";
-        cout << "WE HERE ,"<<endl;
-        bool end = false;
-        while (end == false)
-        {
-            recfifo.openread();
-            string results = recfifo.recv();
-                if (results == "$END")
-                {
-                    recfifo.fifoclose();
-                    end = true;
-                    break;
-                }
-            cout << results << endl;
-            recfifo.fifoclose();
-        }
+    sendfifo.fifoclose();
+    recfifo.openread();
+    cout << "Content-type: text/plain\n\n";
+    bool end = false;
+    while (end == false)
+    {
+
+        string results = recfifo.recv();
+            if (results == "$END")
+            {
+                recfifo.fifoclose();
+                end = true;
+                break;
+            }
+        cout << results << endl;
+    }
+    recfifo.fifoclose();
     //}
     //else 
     //{
