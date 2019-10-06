@@ -37,7 +37,7 @@ public :
     //output stream operator is overloaded in order to output a character's characteristics neatly
     friend ostream& operator<<(ostream&os, const dataEntry & data);
     //basically just returns the data for a character. used for marvel server instead of the overloaded << operator
-    string returnData(dataEntry characterSelection)
+    string returnData();
 
 private:
 
