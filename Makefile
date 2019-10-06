@@ -28,8 +28,8 @@ marvelserver.o: marvelserver.cpp fifo.h dataEntry.h dataLookup.h extraFunctions.
 marvelclient.o: marvelclient.cpp fifo.h extraFunctions.h
 	$(CC) -c $(CFLAGS) marvelclient.cpp 
 	
-testclient.o: testclient.cpp fifo.h extraFunctions.h
-	$(CC) -c $(CFLAGS) testclient.cpp 
+testClient.o: testClient.cpp fifo.h extraFunctions.h
+	$(CC) -c $(CFLAGS) testClient.cpp 
 
 marvelserver: marvelserver.o fifo.o dataEntry.o dataLookup.o extraFunctions.o
 	$(CC) $(CFLAGS) marvelserver.o dataEntry.o dataLookup.o extraFunctions.o fifo.o -o marvelserver
@@ -40,8 +40,8 @@ fifo.o: fifo.cpp fifo.h
 marvelclient: marvelclient.o fifo.h extraFunctions.h
 	$(CC) marvelclient.o fifo.o extraFunctions.o -o marvelclient -L/usr/local/lib -lcgicc
 	
-testclient: testclient.o fifo.h extraFunctions.h
-	$(CC) testclient.o fifo.o extraFunctions.o -o testclient -L/usr/local/lib -lcgicc
+testClient: testClient.o fifo.h extraFunctions.h
+	$(CC) testClient.o fifo.o extraFunctions.o -o testClient -L/usr/local/lib -lcgicc
 	
 PutCGI: marvelclient
 	chmod 757 marvelclient
