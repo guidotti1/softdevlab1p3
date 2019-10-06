@@ -62,7 +62,12 @@ int main()
             }
         else
             {
-            cout<<characters[charNumInt-1];
+            outMessage = characters[charNumInt-1];
+            sendfifo.openwrite();
+            sendfifo.send(outMessage);
+            sendfifo.fifoclose();
+            recfifo.fifoclose();
+            //cout<<characters[charNumInt-1];
             }
         }
 
