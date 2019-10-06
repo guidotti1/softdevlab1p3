@@ -24,7 +24,7 @@ int main()
     string inMessage, outMessage, data, type, charNum;
     int charNumInt;
     //build maps. characters stores matching characters for input data
-    string filename = "input.txt";
+    string filename = "/home/class/SoftDev/marvel/marvel-wikia-data.csv";
     dataLookup ourMap(filename);
     ourMap.createYearAndNameMaps();
     vector<dataEntry> characters;
@@ -48,23 +48,22 @@ int main()
         data = word;
         getline(s, word, '%');
         charNum = word;
+        istringstream iss(charNum);
+        iss >> charNumInt;
 
         characters = ourMap.userSearch(ctype, data);
         if (charNumInt == 0)
             {
-            string output = ourMap.readMatches(characters);
+            outMessage = ourMap.readMatches(characters);
             sendfifo.openwrite();
-            sendfifo.send(output);
+            sendfifo.send(outMessage);
             sendfifo.fifoclose();
             recfifo.fifoclose();
             }
-       // else
-        //    {
-        //    cout<<characters[charNumInt-1];
-        //    }
-
-
-
+        else
+            {
+            cout<<characters[charNumInt-1];
+            }
         }
 
 }
