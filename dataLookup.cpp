@@ -10,14 +10,13 @@ dataLookup::dataLookup(string filename)
     input.open(filename.c_str());
     if (input.fail())
         {
-        cout << "Failed to open file, program will be quit"<<endl;
+        //cout << "Failed to open file, program will be quit"<<endl;
         exit(1);
         }
     vector<string> row;
     string line, word;
     while (!input.eof())
         {
-
         row.clear();
         //take one line of input at a time
         getline(input, line);
