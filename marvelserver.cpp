@@ -62,7 +62,8 @@ int main()
             }
         else
             {
-            outMessage = returnData(characters[charNumInt-1]);
+            dataEntry charSelection = characters[charNumInt-1];
+            outMessage = charSelection.returnData();
             sendfifo.openwrite();
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
