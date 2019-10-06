@@ -86,7 +86,6 @@ int main()
             }
         cout << results << endl;
     }
-    recfifo.fifoclose();
     //}
     //else 
     //{
