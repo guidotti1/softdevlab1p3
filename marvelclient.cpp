@@ -70,7 +70,7 @@ int main()
     //if (sendNumber == "0%")
     //{
 
-    sendfifo.fifoclose();
+
     recfifo.openread();
     cout << "Content-type: text/plain\n\n";
     bool end = false;
@@ -81,6 +81,7 @@ int main()
             if (results == "$END")
             {
                 recfifo.fifoclose();
+                sendfifo.fifoclose();
                 end = true;
                 break;
             }
