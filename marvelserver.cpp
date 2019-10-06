@@ -62,6 +62,7 @@ int main()
             }
         else
             {
+            cout << "in charNumInt ne 0"<<endl;
             dataEntry charSelection = characters[charNumInt-1];
             outMessage = charSelection.returnData();
             sendfifo.openwrite();
