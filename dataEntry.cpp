@@ -86,3 +86,55 @@ ostream& operator<<(ostream&os, const dataEntry& data)
 
     return os;
 }
+
+string dataEntry::returnData(dataEntry characterSelection)
+{
+    string returnMessage="";
+    returnMessage += "This character's full name  is: ";
+    for (int r = 0; r < characterSelection.name.size(); r++)
+        {
+        returnMessage+=  characterSelection.name[r];
+        returnMessage+= " ";
+        }
+    returnMessage += ",";
+    //if all of these characteristics are not empty then we will output them
+    if (characterSelection.align != "")
+        {
+        returnMessage += "This character's alignment is: ";
+        returnMessage += characterSelection.align;
+        returnMessage += ",";
+        }
+    if (characterSelection.eye != "")
+        {
+        returnMessage += "This character's eye color is: ";
+        returnMessage += characterSelection.eye;
+        returnMessage += ",";
+        }
+    if (characterSelection.hair != "")
+        {
+        returnMessage += "This character's hair color is: ";
+        returnMessage += characterSelection.hair;
+        returnMessage += ",";
+        }
+    if (characterSelection.sex != "")
+        {
+        returnMessage += "This character's gender is: ";
+        returnMessage += characterSelection.sex;
+        returnMessage += ",";
+        }
+    if (characterSelection.appearances != "")
+        {
+        returnMessage += "This character has made: ";
+        returnMessage += characterSelection.appearances;
+        returnMessage += " appearances ";
+        returnMessage += ",";
+        }
+    if (characterSelection.emptyYear == false)
+        {
+        returnMessage += "This character was first introduced in : ";
+        returnMessage += characterSelection.year;
+        returnMessage += ",";
+        }
+
+    return returnMessage;
+}
