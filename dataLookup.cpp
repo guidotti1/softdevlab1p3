@@ -257,6 +257,7 @@ string dataLookup::readMatches (vector<dataEntry> characters)
         outMessage += "?";
         //cout << ",";
         }
+    outMessage += "$END?";
     return outMessage;
 }
 
