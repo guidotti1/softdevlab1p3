@@ -67,12 +67,12 @@ int main()
 
     //get message from server
 
-    if (sendNumber == "0%")
-    {
+    //if (sendNumber == "0%")
+    //{
         recfifo.openread();
         sendfifo.fifoclose();
         cout << "Content-type: text/plain\n\n";
-        cout << "WE HERE ,"<<endl;
+        //cout << "WE HERE ,"<<endl;
         bool end = false;
         while (end == false)
         {
@@ -85,14 +85,14 @@ int main()
                 }
             cout << results << endl;
         }
-    }
-    else 
-    {
-        recfifo.openread();
-        sendfifo.fifoclose();
-        string results = recfifo.recv();
-        cout << results << endl;
-        recfifo.fifoclose();
-    }        
+    //}
+    //else 
+    //{
+     //   recfifo.openread();
+     //   sendfifo.fifoclose();
+    //    string results = recfifo.recv();
+     //   cout << results << endl;
+     //   recfifo.fifoclose();
+   // }        
     return 0;
 }
