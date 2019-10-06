@@ -71,12 +71,14 @@ int main()
     sendfifo.fifoclose();
 
     cout << "Content-type: text/plain\n\n";
-    while (results != "$END")
+    bool end = false;
+    while (end == false)
     {
         string results = recfifo.recv();
             if (results == "$END")
             {
                 recfifo.fifoclose();
+                end = true;
                 break;
             }
         cout << results << endl;
