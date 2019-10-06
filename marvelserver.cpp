@@ -57,10 +57,17 @@ int main()
         if (charNumInt == 0)
             {
             outMessage = ourMap.readMatches(characters);
-            sendfifo.openwrite();
-            sendfifo.send(outMessage);
-            sendfifo.fifoclose();
-            recfifo.fifoclose();
+            bool end = false;
+            stringstream s2(outMessage);
+            string outWord;
+            while (end == false)
+            {
+                getline(s2, outWord, '?');
+                sendfifo.openwrite();
+                sendfifo.send(outWord);
+                sendfifo.fifoclose();
+                recfifo.fifoclose();
+            }
             cout << " Results: (charNumInt = 1) " << outMessage << endl;
             }
         else
