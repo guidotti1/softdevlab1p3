@@ -72,6 +72,7 @@ int main()
         recfifo.openread();
         sendfifo.fifoclose();
         cout << "Content-type: text/plain\n\n";
+        cout << "WE HERE ,"<<endl;
         bool end = false;
         while (end == false)
         {
