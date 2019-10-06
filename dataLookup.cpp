@@ -258,3 +258,5 @@ string dataLookup::readMatches (vector<dataEntry> characters)
         }
     return outMessage;
 }
+
+
