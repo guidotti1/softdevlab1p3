@@ -71,6 +71,7 @@ int main()
                     recfifo.fifoclose();
                 }
                 sendfifo.send(outWord);
+                cout << "sending outWord :: " << outWord << endl;
             }
             cout << " Results: (charNumInt = 1) " << outMessage << endl;
             }
