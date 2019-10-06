@@ -62,7 +62,7 @@ int main()
             }
         else
             {
-            outMessage = characters[charNumInt-1];
+            outMessage = returnData(characters[charNumInt-1]);
             sendfifo.openwrite();
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
