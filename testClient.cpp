@@ -18,7 +18,7 @@ int main() {
   string reply;
 
   while (1) {
-    string message = "1%PETER%0%"
+    string message = "1%PETER%0%";
 
 	// create the FIFOs for communication
 	Fifo recfifo(receive_fifo);
