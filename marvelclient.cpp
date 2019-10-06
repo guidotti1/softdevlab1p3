@@ -68,12 +68,19 @@ int main()
 
     //get message from server
     recfifo.openread();
-    string results = recfifo.recv();
-    recfifo.fifoclose();
     sendfifo.fifoclose();
 
     cout << "Content-type: text/plain\n\n";
-    cout << results << endl;
+    while (results != "$END")
+    {
+        string results = recfifo.recv();
+            if (results == "$END")
+            {
+                recfifo.fifoclose();
+                break;
+            }
+        cout << results << endl;
+    }
 
     return 0;
 }
