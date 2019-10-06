@@ -61,15 +61,14 @@ int main()
     sendNumber += "%";
     toUpperCase(sendData);
     string message = sendType + sendData + sendNumber;
-
+    sendfifo.openwrite();
+    sendfifo.send(message);
     //send message to server  to get results
 
     //get message from server
 
     if (sendNumber == "0%")
     {
-        sendfifo.openwrite();
-        sendfifo.send(message);
         recfifo.openread();
         sendfifo.fifoclose();
         cout << "Content-type: text/plain\n\n";
@@ -88,8 +87,6 @@ int main()
     }
     else 
     {
-        sendfifo.openwrite();
-        sendfifo.send(message);
         recfifo.openread();
         sendfifo.fifoclose();
         string results = recfifo.recv();
