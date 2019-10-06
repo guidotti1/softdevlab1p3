@@ -50,7 +50,9 @@ int main()
         charNum = word;
         istringstream iss(charNum);
         iss >> charNumInt;
-
+        
+        cout << "Message: " << inMessage << endl;
+        
         characters = ourMap.userSearch(ctype, data);
         if (charNumInt == 0)
             {
@@ -59,6 +61,7 @@ int main()
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
             recfifo.fifoclose();
+            cout << " Results: (charNumInt = 1) " << outMessage << endl;
             }
         else
             {
@@ -69,6 +72,7 @@ int main()
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
             recfifo.fifoclose();
+            cout << " Results: (charNumInt != 1) " << outMessage << endl;
             //cout<<characters[charNumInt-1];
             }
         }
