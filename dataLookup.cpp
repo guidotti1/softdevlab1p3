@@ -254,6 +254,7 @@ string dataLookup::readMatches (vector<dataEntry> characters)
             //cout << characters[i].name[q] << " ";
             }
         outMessage += ",";
+        outMessage += "?";
         //cout << ",";
         }
     return outMessage;
