@@ -87,52 +87,52 @@ ostream& operator<<(ostream&os, const dataEntry& data)
     return os;
 }
 
-string dataEntry::returnData(dataEntry characterSelection)
+string dataEntry::returnData()
 {
     string returnMessage="";
     returnMessage += "This character's full name  is: ";
-    for (int r = 0; r < characterSelection.name.size(); r++)
+    for (int r = 0; r < name.size(); r++)
         {
-        returnMessage+=  characterSelection.name[r];
+        returnMessage+= name[r];
         returnMessage+= " ";
         }
     returnMessage += ",";
     //if all of these characteristics are not empty then we will output them
-    if (characterSelection.align != "")
+    if (align != "")
         {
         returnMessage += "This character's alignment is: ";
-        returnMessage += characterSelection.align;
+        returnMessage += align;
         returnMessage += ",";
         }
-    if (characterSelection.eye != "")
+    if (eye != "")
         {
         returnMessage += "This character's eye color is: ";
-        returnMessage += characterSelection.eye;
+        returnMessage += eye;
         returnMessage += ",";
         }
-    if (characterSelection.hair != "")
+    if (hair != "")
         {
         returnMessage += "This character's hair color is: ";
-        returnMessage += characterSelection.hair;
+        returnMessage += hair;
         returnMessage += ",";
         }
-    if (characterSelection.sex != "")
+    if (sex != "")
         {
         returnMessage += "This character's gender is: ";
-        returnMessage += characterSelection.sex;
+        returnMessage += sex;
         returnMessage += ",";
         }
-    if (characterSelection.appearances != "")
+    if (appearances != "")
         {
         returnMessage += "This character has made: ";
-        returnMessage += characterSelection.appearances;
+        returnMessage += appearances;
         returnMessage += " appearances ";
         returnMessage += ",";
         }
-    if (characterSelection.emptyYear == false)
+    if (emptyYear == false)
         {
         returnMessage += "This character was first introduced in : ";
-        returnMessage += characterSelection.year;
+        returnMessage += year;
         returnMessage += ",";
         }
 
