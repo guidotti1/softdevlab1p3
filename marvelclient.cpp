@@ -61,27 +61,30 @@ int main()
     sendNumber += "%";
     toUpperCase(sendData);
     
-    //send message to server
+    //send message to server  
+    //message will have the form TYPE%DATA%NUMBER% for server to parse
     string message = sendType + sendData + sendNumber;
     sendfifo.openwrite();
     sendfifo.send(message);
     
     //receive feedback from server
-	cout << "Content-type: text/plain\n\n";
-	string reply="";
-	recfifo.openread();
-	bool end = false;
-	while (end == false)
+    //$END is placed at the end of the message to tell when the message terminates
+    //feedback comes line by line, is separated by commas for the javascript to parse and place into a table. 
+    cout << "Content-type: text/plain\n\n";
+    string reply="";
+    recfifo.openread();
+    bool end = false;
+    while (end == false)
+    {
+    	reply = recfifo.recv();
+	if (reply == "$END")
 	{
-		reply = recfifo.recv();
-		if (reply == "$END")
-		{
-			end = true;
-			break;
-		}
+		end = true;
+		break;
+	}
 		cout << reply;
 	}
-	recfifo.fifoclose();
-	sendfifo.fifoclose();
+    recfifo.fifoclose();
+    sendfifo.fifoclose();
     return 0;
 }
