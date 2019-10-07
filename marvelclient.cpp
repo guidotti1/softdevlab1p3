@@ -60,42 +60,28 @@ int main()
     string sendNumber = **itcharNumber;
     sendNumber += "%";
     toUpperCase(sendData);
+    
+    //send message to server
     string message = sendType + sendData + sendNumber;
     sendfifo.openwrite();
     sendfifo.send(message);
-    //send message to server  to get results
-
-    //get message from server
-
-    //if (sendNumber == "0%")
-    //{
-
-
     
+    //receive feedback from server
     cout << "Content-type: text/plain\n\n";
-    bool end = false;
-    while (end == false)
-    {
-        recfifo.openread();
-        string results = recfifo.recv();
-            if (results == "$END")
-            {
-                recfifo.fifoclose();
-                sendfifo.fifoclose();
-                end = true;
-                break;
-            }
-        cout << results << endl;
-        recfifo.fifoclose();
-    }
-    //}
-    //else 
-    //{
-    //    recfifo.openread();
-    //    sendfifo.fifoclose();
-    //    string results = recfifo.recv();
-    //    cout << results << endl;
-    //   recfifo.fifoclose();
-    //}        
+    string reply;
+	bool end = false;
+	while (end == false)
+	{
+		reply = recfifo.recv();
+		if (reply == "$END")
+		{
+			recfifo.fifoclose();
+			sendfifo.fifoclose();
+			end = true;
+			break;
+		}
+	cout << reply;
+	}
+    
     return 0;
 }
