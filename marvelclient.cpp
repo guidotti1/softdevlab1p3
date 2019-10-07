@@ -73,7 +73,7 @@ int main()
 	bool end = false;
 	while (end == false)
 	{
-		reply recfifo.recv();
+		reply = recfifo.recv();
 		if (reply == "$END")
 		{
 			recfifo.fifoclose();
