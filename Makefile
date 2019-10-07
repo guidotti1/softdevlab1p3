@@ -11,7 +11,7 @@ CFLAGS= -std=c++14
 
 RM= /bin/rm -f
 
-all: marvelserver marvelclient PutCGI PutHTML
+all: marvelserver marvelclient testClient PutCGI PutHTML
 
 dataEntry.o: dataEntry.cpp dataEntry.h
 	$(CC) $(CFLAGS) dataEntry.cpp -c
