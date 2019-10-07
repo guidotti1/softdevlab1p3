@@ -16,7 +16,7 @@ string receive_fifo = "Marvelreply";
 string send_fifo = "Marvelrequest";
 
 int main() {
-	string message, name;
+	//string message, name;
 	string reply;
 
   //while (1) {
