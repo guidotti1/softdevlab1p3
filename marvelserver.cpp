@@ -69,8 +69,6 @@ int main()
                 {
                     sendfifo.send(outWord);
                     cout << "last outWord!! :: " << outWord << endl;
-                    sendfifo.fifoclose();
-                    recfifo.fifoclose();
                     end = true;
                     break;
                 }
@@ -78,7 +76,9 @@ int main()
                 sendfifo.fifoclose();
                 cout << "sending outWord :: " << outWord << endl;
             }
-            cout << " Results: (charNumInt = 1) " << outMessage << endl;
+            sendfifo.fifoclose();
+            recfifo.fifoclose();
+            cout << " Results: (charNumInt = 0) " << outMessage << endl;
             }
         else
             {
