@@ -17,11 +17,8 @@
 
 using namespace std;
 using namespace cgicc;
-//values returned by results_select??
-#define ONE "OneWord"
-#define YEAR "Year"
-#define MULTI "MultiWord"
 
+//names of receive and send fifos 
 string receive_fifo = "Marvelreply";
 string send_fifo = "Marvelrequest";
 
@@ -42,6 +39,7 @@ int main()
     string sendType;
     string userType = **itts;
     char cType = userType[0];
+    //cType indicates the type of search we are doing 
     if (cType == '1')
         {
         sendType = "1%";
@@ -54,11 +52,12 @@ int main()
         {
         sendType = "3%";
         }
-
+    //sendData is the one word name, year, or multi-word name
     string sendData = **itname;
     sendData += "%";
     string sendNumber = **itcharNumber;
     sendNumber += "%";
+    //datais uppercase because map is keyed by uppercase data.
     toUpperCase(sendData);
     
     //send message to server  
