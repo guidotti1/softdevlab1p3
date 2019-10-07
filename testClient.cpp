@@ -36,7 +36,7 @@ int main() {
 	while (end == false)
 	{
 		reply = recfifo.recv();
-		if (results == "$END")
+		if (reply == "$END")
 		{
 			recfifo.fifoclose();
 			sendfifo.fifoclose();
