@@ -32,10 +32,20 @@ int main() {
 
 	/* Get a message from a server */
 	recfifo.openread();
-	reply = recfifo.recv();
-
-	recfifo.fifoclose();
-	sendfifo.fifoclose();
+	bool end = false;
+	while (end == false)
+	{
+		reply = recfifo.recv();
+		if (results == "$END")
+		{
+			recfifo.fifoclose();
+			sendfifo.fifoclose();
+			end = true;
+			break;
+		}
+	
+	//recfifo.fifoclose();
+	//sendfifo.fifoclose();
 	cout << "Server sent: " << reply << endl;
 //  }
 
