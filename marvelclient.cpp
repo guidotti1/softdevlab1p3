@@ -67,12 +67,13 @@ int main()
     sendfifo.send(message);
     
     //receive feedback from server
-    cout << "Content-type: text/plain\n\n";
-    string reply;
+	cout << "Content-type: text/plain\n\n";
+	string reply="";
+	recfifo.openread();
 	bool end = false;
 	while (end == false)
 	{
-		reply = recfifo.recv();
+		reply += recfifo.recv();
 		if (reply == "$END")
 		{
 			recfifo.fifoclose();
@@ -80,8 +81,8 @@ int main()
 			end = true;
 			break;
 		}
-	cout << reply;
 	}
+	cout << reply;
     
     return 0;
 }
