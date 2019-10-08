@@ -97,30 +97,35 @@ string dataEntry::returnData()
         returnMessage+= " ";
         }
     returnMessage += ",";
+    returnMessage += "?";
     //if all of these characteristics are not empty then we will output them
     if (align != "")
         {
         returnMessage += "This character's alignment is: ";
         returnMessage += align;
         returnMessage += ",";
+        returnMessage += "?";
         }
     if (eye != "")
         {
         returnMessage += "This character's eye color is: ";
         returnMessage += eye;
         returnMessage += ",";
+        returnMessage += "?";
         }
     if (hair != "")
         {
         returnMessage += "This character's hair color is: ";
         returnMessage += hair;
         returnMessage += ",";
+        returnMessage += "?";
         }
     if (sex != "")
         {
         returnMessage += "This character's gender is: ";
         returnMessage += sex;
         returnMessage += ",";
+        returnMessage += "?";
         }
     if (appearances != "")
         {
@@ -128,12 +133,14 @@ string dataEntry::returnData()
         returnMessage += appearances;
         returnMessage += " appearances ";
         returnMessage += ",";
+        returnMessage += "?";
         }
     if (emptyYear == false)
         {
         returnMessage += "This character was first introduced in : ";
         returnMessage += year;
         returnMessage += ",";
+        returnMessage += "?";
         }
 
     return returnMessage;
