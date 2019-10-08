@@ -29,6 +29,7 @@ int main() {
 	cout << "Send:" << message << endl;
 	sendfifo.openwrite();
 	sendfifo.send(message);
+	sendfifo.fifoclose();
 
 	/* Get a message from a server */
 	
@@ -41,7 +42,6 @@ int main() {
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
-
 			end = true;
 			break;
 		}
@@ -50,7 +50,7 @@ int main() {
 	
 	}
 	recfifo.fifoclose();
-	sendfifo.fifoclose();
+
 
 //  }
 
