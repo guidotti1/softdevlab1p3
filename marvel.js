@@ -58,8 +58,8 @@ function userSelectCharacter()
 function processResults(results) 
 {
     console.log("In processResults");
-    $('#searchresults').empty();
-    $('#characterNumberDisplay').empty();
+    //$('#searchresults').empty();
+    //$('#characterNumberDisplay').empty();
     $('#searchresults').append(nameTable(results));
 }
 
@@ -77,6 +77,8 @@ function clearResults()
 
 function getMatches()
 {
+    $('#searchresults').empty();
+    $('#characterNumberDisplay').empty();
     console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
