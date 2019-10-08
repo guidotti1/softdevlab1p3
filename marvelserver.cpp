@@ -100,7 +100,7 @@ int main()
             cout << " results :: " << outMessage << endl;
          //   }
         //else
-            {
+           // {
             //this part is used to allow the user to select an individual character and view their data
             //find the character selection and read their nonempty data values. 
          //   cout << "in charNumInt ne 0"<<endl;
