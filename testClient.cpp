@@ -33,25 +33,23 @@ int main() {
 	/* Get a message from a server */
 	
 	bool end = false;
+	recfifo.openread();
 	while (end == false)
 	{
-		recfifo.openread();
+		
 		cout << "inside while loop"<<endl;
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
 
 			end = true;
-			recfifo.fifoclose();
 			break;
 		}
 	
-	//recfifo.fifoclose();
-	//sendfifo.fifoclose();
 	cout << "Server sent: " << reply << endl;
-	recfifo.fifoclose();
+	
 	}
-
+	recfifo.fifoclose();
 	sendfifo.fifoclose();
 
 //  }
