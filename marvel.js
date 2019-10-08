@@ -92,7 +92,6 @@ function getCharacter()
 {
     console.log("in get character!!!");
     charNumber=$('#charNumberInput').val();
-    $('#characterNumberDisplay').empty();	
     $.ajax({
 		url: '/cgi-bin/guidotti1_marvelclient.cgi?name='+data+'&type_select='+searchType+"&charNumber="+charNumber,
 		dataType: 'text',
@@ -104,7 +103,6 @@ function getCharacter()
 function processCharacter(result)
 { 
 	console.log("in process character!!");
- 	$('#characterNumberDisplay').empty();
 	var attributeList = '<ul class="list-group">';
 	var a = result.split(",");
 	var aLen = a.length;
