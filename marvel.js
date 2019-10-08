@@ -79,6 +79,7 @@ function getMatches()
 {
     $('#characterNumberDisplay').empty();	
     $('#searchresults').empty();
+    clearResults();
     console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
