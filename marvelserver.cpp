@@ -76,6 +76,8 @@ int main()
                     //end of message marked by $END
                     sendfifo.send(outWord);
                     cout << "last outWord!! :: " << outWord << endl;
+                    sendfifo.fifoclose();
+                    recfifo.fifoclose();
                     end = true;
                     break;
                 }
@@ -83,8 +85,7 @@ int main()
                 //we send one line at a time across the fifo
                 cout << "sending outWord :: " << outWord << endl;
             }
-            sendfifo.fifoclose();
-            recfifo.fifoclose();
+
             //results in their entirety 
             cout << " Results: (charNumInt = 0) " << outMessage << endl;
             }
