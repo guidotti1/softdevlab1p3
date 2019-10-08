@@ -112,6 +112,7 @@ int main()
          //   recfifo.fifoclose();
           //  cout << " Results: (charNumInt != 1) " << outMessage << endl;
           //  }
+                  return 0;
         }
-    return 0;
-}
+  
+//}
