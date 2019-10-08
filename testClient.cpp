@@ -33,10 +33,10 @@ int main() {
 	/* Get a message from a server */
 	
 	bool end = false;
-	
+	recfifo.openread();
 	while (end == false)
 	{
-		recfifo.openread();
+
 		cout << "inside while loop"<<endl;
 		reply = recfifo.recv();
 		if (reply == "$END")
