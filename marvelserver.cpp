@@ -82,8 +82,9 @@ int main()
                 //we send one line at a time across the fifo
                 cout << "sending outWord :: " << outWord << endl;
             }
-            sendfifo.fifoclose();
+
             recfifo.fifoclose();
+            sendfifo.fifoclose();
             //results in their entirety 
             cout << " Results: (charNumInt = 0) " << outMessage << endl;
             }
@@ -95,8 +96,8 @@ int main()
             dataEntry charSelection = characters[charNumInt-1];
             outMessage = charSelection.returnData();
             sendfifo.send(outMessage);
-            sendfifo.fifoclose();
             recfifo.fifoclose();
+            sendfifo.fifoclose();
             cout << " Results: (charNumInt != 1) " << outMessage << endl;
             }
         }
