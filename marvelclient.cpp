@@ -69,21 +69,33 @@ int main()
     //receive feedback from server
     //$END is placed at the end of the message to tell when the message terminates
     //feedback comes line by line, is separated by commas for the javascript to parse and place into a table. 
-    cout << "Content-type: text/plain\n\n";
-    string reply="";
-    recfifo.openread();
-    bool end = false;
-    while (end == false)
+    if (sendNumber == "0%")
     {
-    	reply = recfifo.recv();
-	if (reply == "$END")
-	{
-		end = true;
-		break;
-	}
-		cout << reply;
-	}
-    recfifo.fifoclose();
-    sendfifo.fifoclose();
+	    cout << "Content-type: text/plain\n\n";
+	    string reply="";
+	    recfifo.openread();
+	    bool end = false;
+	    while (end == false)
+	    {
+		reply = recfifo.recv();
+		if (reply == "$END")
+		{
+			end = true;
+			break;
+		}
+			cout << reply;
+	    }
+	    recfifo.fifoclose();
+	    sendfifo.fifoclose();
+    }
+    else
+    {
+	    string reply="";
+	    recfifo.openread();
+	    reply = recfifo.recv();
+	    cout << reply;
+	    recfifo.fifoclose();
+	    sendfifo.fifoclose();
+    }
     return 0;
 }
