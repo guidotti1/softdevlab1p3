@@ -19,11 +19,11 @@ string send_fifo = "Marvelrequest";
 int main() {
 	//string message, name;
 	string reply;
-
-  //while (1) {
 	vector<string> messages;
 	messages.push_back("1%PETER%0%");	
 	messages.push_back("1%PETER%32%");
+  while (1) {
+
 
 	// create the FIFOs for communication
 	Fifo recfifo(receive_fifo);
@@ -59,7 +59,7 @@ int main() {
 
 
 
-//  }
+  }
 
 return 0;
 }
