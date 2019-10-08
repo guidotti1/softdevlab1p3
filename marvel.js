@@ -79,11 +79,9 @@ function getMatches()
 {
     $('#characterNumberDisplay').empty();	
     $('#searchresults').empty();
-    clearResults();
     console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
-    $('#searchresults').empty();
     $.ajax({
 		url: '/cgi-bin/guidotti1_marvelclient.cgi?name='+data+'&type_select='+searchType+"&charNumber="+charNumber,
 		dataType: 'text',
@@ -94,7 +92,7 @@ function getMatches()
 
 function getCharacter()
 {
-    //console.log("in get character!!!");
+    console.log("in get character!!!");
     charNumber=$('#charNumberInput').val();
     $.ajax({
 		url: '/cgi-bin/guidotti1_marvelclient.cgi?name='+data+'&type_select='+searchType+"&charNumber="+charNumber,
@@ -102,11 +100,6 @@ function getCharacter()
 		success: processCharacter,
 		error: function(){alert("Error: Something went wrong");}
     });
-}
-
-function clearCharacter()
-{
-	 $('#characterNumberDisplay').empty();
 }
 
 function processCharacter(result)
