@@ -31,24 +31,27 @@ int main() {
 	sendfifo.send(message);
 
 	/* Get a message from a server */
-	recfifo.openread();
+	
 	bool end = false;
 	while (end == false)
 	{
+		recfifo.openread();
 		cout << "inside while loop"<<endl;
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
 
 			end = true;
+			recfifo.fifoclose();
 			break;
 		}
 	
 	//recfifo.fifoclose();
 	//sendfifo.fifoclose();
 	cout << "Server sent: " << reply << endl;
-	}
 	recfifo.fifoclose();
+	}
+
 	sendfifo.fifoclose();
 
 //  }
