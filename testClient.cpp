@@ -48,8 +48,9 @@ int main() {
 	cout << "Server sent: " << reply << endl;
 	
 	}
-	recfifo.fifoclose();
 	sendfifo.fifoclose();
+	recfifo.fifoclose();
+
 
 
 //  }
