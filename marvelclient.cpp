@@ -81,12 +81,13 @@ int main()
 		if (reply == "$END")
 		{
 			end = true;
+		    	recfifo.fifoclose();
+	    		sendfifo.fifoclose();
 			break;
 		}
 			cout << reply;
 	    }
-	    recfifo.fifoclose();
-	    sendfifo.fifoclose();
+
     }
     else
     {
