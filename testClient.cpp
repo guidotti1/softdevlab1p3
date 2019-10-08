@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "fifo.h"
 #include "extraFunctions.h"
 
@@ -20,37 +21,39 @@ int main() {
 	string reply;
 
   //while (1) {
-	string message = "1%PETER%0%";
+	vector<string> messages;
+	messages.push_back("1%PETER%0%");	
+	messages.push_back("1%PETER%32%");
 
 	// create the FIFOs for communication
 	Fifo recfifo(receive_fifo);
 	Fifo sendfifo(send_fifo);
-
-	cout << "Send:" << message << endl;
-	sendfifo.openwrite();
-	sendfifo.send(message);
-
-	/* Get a message from a server */
-	
-	bool end = false;
-	recfifo.openread();
-	while (end == false)
+	for (int i =0; i < messages.size(); i++)
 	{
+		string message = messages[i];
+		cout << "Send:" << message << endl;
+		sendfifo.openwrite();
+		sendfifo.send(message);
 
-		cout << "inside while loop"<<endl;
-		reply = recfifo.recv();
-		if (reply == "$END")
+		/* Get a message from a server */
+
+		bool end = false;
+		recfifo.openread();
+		while (end == false)
 		{
-			end = true;	
-			recfifo.fifoclose();
-			sendfifo.fifoclose();
-			break;
+
+			cout << "inside while loop"<<endl;
+			reply = recfifo.recv();
+			if (reply == "$END")
+			{
+				end = true;	
+				recfifo.fifoclose();
+				sendfifo.fifoclose();
+				break;
+			}
+
+		cout << "Server sent: " << reply << endl;
 		}
-	
-	cout << "Server sent: " << reply << endl;
-
-
-	
 	}
 
 
