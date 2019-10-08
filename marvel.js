@@ -59,6 +59,7 @@ function processResults(results)
 {
     console.log("In processResults");
     $('#searchresults').empty();
+    $('#characterNumberDisplay').empty();
     $('#searchresults').append(nameTable(results));
 }
 
