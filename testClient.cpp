@@ -35,6 +35,7 @@ int main() {
 	bool end = false;
 	while (end == false)
 	{
+		cout << "inside while loop"<<endl;
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
