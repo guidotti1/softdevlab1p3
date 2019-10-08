@@ -69,37 +69,37 @@ int main()
     //$END is placed at the end of the message to tell when the message terminates
     //feedback comes line by line, is separated by commas for the javascript to parse and place into a table. 
     string reply;
-    if (sendNumber == "0%")
+    //if (sendNumber == "0%")
+    //{
+    sendfifo.openwrite();
+    sendfifo.send(message);
+    cout << "Content-type: text/plain\n\n";
+    bool end = false;
+    recfifo.openread();
+    while (end == false)
     {
-	    sendfifo.openwrite();
-	    sendfifo.send(message);
-	    cout << "Content-type: text/plain\n\n";
-	    bool end = false;
-	    recfifo.openread();
-	    while (end == false)
-	    {
-		reply = recfifo.recv();
-		if (reply == "$END")
-		{
-			end = true;
-		    	recfifo.fifoclose();
-	    		sendfifo.fifoclose();
-			break;
-		}
-		cout << reply;
-	    }
+	reply = recfifo.recv();
+	if (reply == "$END")
+	{
+		end = true;
+		recfifo.fifoclose();
+		sendfifo.fifoclose();
+		break;
+	}
+	cout << reply;
+    }
 
-    }
-    else
-    {
-	    sendfifo.openwrite();
-	    sendfifo.send(message);
-	    string reply="";
-	    recfifo.openread();
-	    reply = recfifo.recv();
-	    cout << reply;
-	    recfifo.fifoclose();
-	    sendfifo.fifoclose();
-    }
+    //}
+    //else
+    //{
+	//    sendfifo.openwrite();
+	//    sendfifo.send(message);
+	//    string reply="";
+	//    recfifo.openread();
+	//    reply = recfifo.recv();
+	//    cout << reply;
+	//    recfifo.fifoclose();
+	//    sendfifo.fifoclose();
+    //}
     return 0;
 }
