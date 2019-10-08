@@ -37,7 +37,6 @@ int main()
         {
         recfifo.openread();
         inMessage = recfifo.recv();
-        recfifo.fifoclose();
         // parse incoming message
         // form : type%data%charnumber%
         //we getline with % as delimiter to get each of the three pieces of information
@@ -84,6 +83,7 @@ int main()
                 cout << "sending outWord :: " << outWord << endl;
             }
             sendfifo.fifoclose();
+            recfifo.fifoclose();
             //results in their entirety 
             cout << " Results: (charNumInt = 0) " << outMessage << endl;
             }
@@ -96,6 +96,7 @@ int main()
             outMessage = charSelection.returnData();
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
+            recfifo.fifoclose();
             cout << " Results: (charNumInt != 1) " << outMessage << endl;
             }
         }
