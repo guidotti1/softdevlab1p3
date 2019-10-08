@@ -142,6 +142,6 @@ string dataEntry::returnData()
         returnMessage += ",";
         returnMessage += "?";
         }
-
+    returnMessage += "$END?";
     return returnMessage;
 }
