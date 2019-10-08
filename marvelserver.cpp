@@ -63,10 +63,11 @@ int main()
             bool end = false;
             stringstream s2(outMessage);
             string outWord;
+            sendfifo.openwrite(); 
             //while loop sends all of the outMessage line by line. ? is placed as delimiter for each line
             while (end == false)
             {
-                sendfifo.openwrite(); 
+                
                 //the lines in the data are separated by ? as a delimiter. this way the server can go line by line.
                 getline(s2, outWord, '?');
                 if (outWord == "$END")
@@ -78,7 +79,6 @@ int main()
                     break;
                 }
                 sendfifo.send(outWord);
-                sendfifo.fifoclose();
                 //we send one line at a time across the fifo
                 cout << "sending outWord :: " << outWord << endl;
             }
