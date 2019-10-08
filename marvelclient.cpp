@@ -74,10 +74,10 @@ int main()
 	    sendfifo.send(message);
 	    cout << "Content-type: text/plain\n\n";
 	    string reply="";
-	    recfifo.openread();
 	    bool end = false;
 	    while (end == false)
 	    {
+	    	recfifo.openread();
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
@@ -86,7 +86,8 @@ int main()
 	    		sendfifo.fifoclose();
 			break;
 		}
-			cout << reply;
+	    	recfifo.fifoclose();
+		cout << reply;
 	    }
 
     }
