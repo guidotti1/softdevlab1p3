@@ -41,13 +41,14 @@ int main() {
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
-			end = true;
+			end = true;	
+			recfifo.fifoclose();
+			sendfifo.fifoclose();
 			break;
 		}
 	
 	cout << "Server sent: " << reply << endl;
-	recfifo.fifoclose();
-	sendfifo.fifoclose();
+
 
 	
 	}
