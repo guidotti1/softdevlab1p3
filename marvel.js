@@ -58,8 +58,8 @@ function userSelectCharacter()
 function processResults(results) 
 {
     console.log("In processResults");
-    //$('#characterNumberDisplay').empty();
-    //$('#searchresults').empty();
+    $('#characterNumberDisplay').empty();
+    $('#searchresults').empty();
     $('#searchresults').append(nameTable(results));
 }
 
@@ -77,11 +77,11 @@ function clearResults()
 
 function getMatches()
 {
-    $('#characterNumberDisplay').empty();	
-    $('#searchresults').empty();
     console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
+    $('#characterNumberDisplay').empty();	
+    $('#searchresults').empty();
     $.ajax({
 		url: '/cgi-bin/guidotti1_marvelclient.cgi?name='+data+'&type_select='+searchType+"&charNumber="+charNumber,
 		dataType: 'text',
