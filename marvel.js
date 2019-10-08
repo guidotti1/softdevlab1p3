@@ -57,7 +57,6 @@ function userSelectCharacter()
 
 function processResults(results) 
 {
-    console.log("In processResults");
     $('#searchresults').empty();
     $('#searchresults').append(nameTable(results));
 }
@@ -76,7 +75,7 @@ function clearResults()
 
 function getMatches()
 {
-    console.log("in get matches");
+    //console.log("in get matches");
     data = $('#search').val();
     if ($('#search').val().length < 2) return;
     $('#searchresults').empty();
@@ -90,7 +89,7 @@ function getMatches()
 
 function getCharacter()
 {
-    console.log("in get character!!!");
+    //console.log("in get character!!!");
     charNumber=$('#charNumberInput').val();
     $.ajax({
 		url: '/cgi-bin/guidotti1_marvelclient.cgi?name='+data+'&type_select='+searchType+"&charNumber="+charNumber,
@@ -105,10 +104,8 @@ function clearCharacter()
 	 $('#characterNumberDisplay').empty();
 }
 
-
 function processCharacter(result)
 { 
-	console.log("in process character!!");
 	var attributeList = '<ul class="list-group">';
 	var a = result.split(",");
 	var aLen = a.length;
@@ -119,4 +116,3 @@ function processCharacter(result)
     	attributeList += '</ul>'
     	$('#characterNumberDisplay').append(attributeList);
 }	
-
