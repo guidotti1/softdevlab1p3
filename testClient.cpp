@@ -34,15 +34,15 @@ int main() {
 	
 	bool end = false;
 	
-	//while (end == false)
-	//{
+	while (end == false)
+	{
 		recfifo.openread();
-		//cout << "inside while loop"<<endl;
+		cout << "inside while loop"<<endl;
 		reply = recfifo.recv();
 		if (reply == "$END")
 		{
 			end = true;
-			//break;
+			break;
 		}
 	
 	cout << "Server sent: " << reply << endl;
@@ -50,7 +50,7 @@ int main() {
 	sendfifo.fifoclose();
 
 	
-	//}
+	}
 
 
 
