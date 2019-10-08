@@ -100,6 +100,12 @@ function getCharacter()
     });
 }
 
+function clearCharacter()
+{
+	 $('#characterNumberDisplay').empty();
+}
+
+
 function processCharacter(result)
 { 
 	console.log("in process character!!");
