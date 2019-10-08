@@ -55,12 +55,21 @@ int main()
         //message output so that we can tell what is received
         cout << "Message: " << inMessage << endl;
         //finds the matching characters in the maps based upon the type of search and the data received for said search. 
-        characters = ourMap.userSearch(ctype, data);
+        
         //this part of the search identifies all matches for input data. charNumInt == 0 means that we are ONLY identifying the matches
-        if (charNumInt == 0)
-            {
+        //if (charNumInt == 0)
+        //    {
             //reads the vector of characters so that it can be parsed by javascript and displayed on website
-            outMessage = ourMap.readMatches(characters);
+            if (charNumInt == 0)
+            {
+                characters = ourMap.userSearch(ctype, data);
+                outMessage = ourMap.readMatches(characters);
+            }
+            else
+            {
+                dataEntry charSelection = characters[charNumInt-1];
+                outMessage = charSelection.returnData();
+            }
             bool end = false;
             stringstream s2(outMessage);
             string outWord;
@@ -88,20 +97,21 @@ int main()
 
             //results in their entirety 
             cout << " Results: (charNumInt = 0) " << outMessage << endl;
-            }
-        else
+            cout << " results :: " << outMessage << endl;
+         //   }
+        //else
             {
             //this part is used to allow the user to select an individual character and view their data
             //find the character selection and read their nonempty data values. 
-            cout << "in charNumInt ne 0"<<endl;
-            dataEntry charSelection = characters[charNumInt-1];
-            outMessage = charSelection.returnData();
-            sendfifo.openwrite();
-            sendfifo.send(outMessage);
-            sendfifo.fifoclose();
-            recfifo.fifoclose();
-            cout << " Results: (charNumInt != 1) " << outMessage << endl;
-            }
+         //   cout << "in charNumInt ne 0"<<endl;
+         //  dataEntry charSelection = characters[charNumInt-1];
+          //  outMessage = charSelection.returnData();
+          //  sendfifo.openwrite();
+         //   sendfifo.send(outMessage);
+         //   sendfifo.fifoclose();
+         //   recfifo.fifoclose();
+          //  cout << " Results: (charNumInt != 1) " << outMessage << endl;
+          //  }
         }
 
 }
