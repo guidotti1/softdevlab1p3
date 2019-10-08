@@ -63,14 +63,15 @@ int main()
     //send message to server  
     //message will have the form TYPE%DATA%NUMBER% for server to parse
     string message = sendType + sendData + sendNumber;
-    sendfifo.openwrite();
-    sendfifo.send(message);
+
     
     //receive feedback from server
     //$END is placed at the end of the message to tell when the message terminates
     //feedback comes line by line, is separated by commas for the javascript to parse and place into a table. 
     if (sendNumber == "0%")
     {
+	    sendfifo.openwrite();
+	    sendfifo.send(message);
 	    cout << "Content-type: text/plain\n\n";
 	    string reply="";
 	    recfifo.openread();
@@ -91,6 +92,8 @@ int main()
     }
     else
     {
+	    sendfifo.openwrite();
+	    sendfifo.send(message);
 	    string reply="";
 	    recfifo.openread();
 	    reply = recfifo.recv();
