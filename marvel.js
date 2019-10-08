@@ -58,8 +58,8 @@ function userSelectCharacter()
 function processResults(results) 
 {
     console.log("In processResults");
-    $('#characterNumberDisplay').empty();
-    $('#searchresults').empty();
+    //$('#characterNumberDisplay').empty();
+    //$('#searchresults').empty();
     $('#searchresults').append(nameTable(results));
 }
 
@@ -104,6 +104,7 @@ function getCharacter()
 
 function processCharacter(result)
 { 
+	console.log("in process character!!");
 	var attributeList = '<ul class="list-group">';
 	var a = result.split(",");
 	var aLen = a.length;
