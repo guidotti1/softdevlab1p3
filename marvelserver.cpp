@@ -113,5 +113,5 @@ int main()
           //  cout << " Results: (charNumInt != 1) " << outMessage << endl;
           //  }
         }
-
+    return 0;
 }
