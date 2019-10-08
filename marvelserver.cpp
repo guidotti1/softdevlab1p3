@@ -37,6 +37,7 @@ int main()
         {
         recfifo.openread();
         inMessage = recfifo.recv();
+        recfifo.fifoclose();
         // parse incoming message
         // form : type%data%charnumber%
         //we getline with % as delimiter to get each of the three pieces of information
@@ -63,10 +64,10 @@ int main()
             bool end = false;
             stringstream s2(outMessage);
             string outWord;
+            sendfifo.openwrite(); 
             //while loop sends all of the outMessage line by line. ? is placed as delimiter for each line
             while (end == false)
             {
-                sendfifo.openwrite(); 
                 //the lines in the data are separated by ? as a delimiter. this way the server can go line by line.
                 getline(s2, outWord, '?');
                 if (outWord == "$END")
@@ -79,11 +80,10 @@ int main()
                     break;
                 }
                 sendfifo.send(outWord);
-                sendfifo.fifoclose();
                 //we send one line at a time across the fifo
                 cout << "sending outWord :: " << outWord << endl;
             }
-            recfifo.fifoclose();
+            sendfifo.fifoclose();
             //results in their entirety 
             cout << " Results: (charNumInt = 0) " << outMessage << endl;
             }
@@ -94,10 +94,8 @@ int main()
             cout << "in charNumInt ne 0"<<endl;
             dataEntry charSelection = characters[charNumInt-1];
             outMessage = charSelection.returnData();
-            sendfifo.openwrite();
             sendfifo.send(outMessage);
             sendfifo.fifoclose();
-            recfifo.fifoclose();
             cout << " Results: (charNumInt != 1) " << outMessage << endl;
             }
         }
